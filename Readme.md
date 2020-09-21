@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм» [![Build status][travis-image]][travis-url]
 
 * Студент: [Yulia Karpova](https://up.htmlacademy.ru/javascript/21/user/34438).
-* Наставник: `Неизвестно`.
+* Наставник: `Keks`.
 
 ---
 
