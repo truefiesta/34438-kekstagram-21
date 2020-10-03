@@ -97,3 +97,32 @@ for (let i = 0; i < photos.length; i++) {
 
   picturesContainer.appendChild(pictureElement);
 }
+
+const bigPicture = document.querySelector(`.big-picture`);
+bigPicture.classList.remove(`hidden`);
+bigPicture.querySelector(`.big-picture__img`).setAttribute(`src`, photos[0].url);
+bigPicture.querySelector(`.social__caption`).textContent = photos[0].description;
+bigPicture.querySelector(`.likes-count`).textContent = photos[0].likes;
+bigPicture.querySelector(`.comments-count`).textContent = photos[0].comments.length;
+
+const commentsContainer = bigPicture.querySelector(`.social__comments`);
+const commentsFragment = document.createDocumentFragment();
+
+for (let i = 0; i < photos[0].comments.length; i++) {
+  const newComment = document.createElement(`li`);
+  newComment.className = `social__comment`;
+  const commentImg = `<img
+    class="social__picture"
+    src=${photos[0].comments[i].avatar}
+    alt=${photos[0].comments[i].name}
+    width="35"
+    height="35"
+  />`;
+  const commentText = `<p class="social__text">${photos[0].comments[i].message}</p>`;
+  newComment.insertAdjacentHTML(`beforeend`, commentImg);
+  newComment.insertAdjacentHTML(`beforeend`, commentText);
+
+  commentsFragment.appendChild(newComment);
+}
+
+commentsContainer.appendChild(commentsFragment);
