@@ -37,7 +37,7 @@ const PHOTOS_NUM = 25;
 const MIN_LIKES = 15;
 const MAX_LIKES = 200;
 const MIN_COMMENTS = 1;
-const MAX_COMMENTS = 10
+const MAX_COMMENTS = 10;
 
 const getRandomItemFromArray = (arr) => {
   return arr[Math.floor(Math.random() * arr.length)];
@@ -45,7 +45,7 @@ const getRandomItemFromArray = (arr) => {
 
 const getRandomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+};
 
 const generateComments = (num) => {
   const arr = [];
