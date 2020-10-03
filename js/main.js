@@ -67,7 +67,7 @@ const generateComments = (num) => {
 };
 
 const generatePhotos = (num) => {
-  const arr=[];
+  const arr = [];
   for (let i = 1; i <= num; i++) {
     arr.push({
       url: `photos/${i}.jpg`,
@@ -82,4 +82,18 @@ const generatePhotos = (num) => {
 
 const photos = generatePhotos(PHOTOS_NUM);
 
+// Найдём шаблон, который мы будем копировать.
+const picturesContainer = document.querySelector(`.pictures`);
+// И найдём элемент, в который мы будем вставлять фото других пользователей.
+const pictureTemplate = document.querySelector(`#picture`).content.querySelector(`.picture`);
 
+for (let i = 0; i < photos.length; i++) {
+  const pictureElement = pictureTemplate.cloneNode(true);
+  const img = pictureElement.querySelector(`.picture__img`);
+  img.setAttribute(`src`, photos[i].url);
+  img.setAttribute(`alt`, photos[i].description);
+  pictureElement.querySelector(`.picture__likes`).textContent = photos[i].likes;
+  pictureElement.querySelector(`.picture__comments`).textContent = photos[i].comments.length;
+
+  picturesContainer.appendChild(pictureElement);
+}
