@@ -34,12 +34,20 @@ const names = [
 ];
 
 const PHOTOS_NUM = 25;
+const MIN_LIKES = 15;
+const MAX_LIKES = 200;
+const MIN_COMMENTS = 1;
+const MAX_COMMENTS = 10
 
 const getRandomItemFromArray = (arr) => {
   return arr[Math.floor(Math.random() * arr.length)];
 };
 
-const generatePhotos = (num) => {
+const getRandomNumber = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+const generateComments = (num) => {
   const arr = [];
   let j = 1;
   for (let i = 0; i < num; i++) {
@@ -55,6 +63,20 @@ const generatePhotos = (num) => {
 
     j++;
   }
+  return arr;
+};
+
+const generatePhotos = (num) => {
+  const arr=[];
+  for (let i = 1; i <= num; i++) {
+    arr.push({
+      url: `photos/${i}.jpg`,
+      description: getRandomItemFromArray(descriptions),
+      likes: getRandomNumber(MIN_LIKES, MAX_LIKES),
+      comments: generateComments(getRandomNumber(MIN_COMMENTS, MAX_COMMENTS))
+    });
+  }
+
   return arr;
 };
 
