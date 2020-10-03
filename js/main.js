@@ -126,3 +126,5 @@ for (let i = 0; i < photos[0].comments.length; i++) {
 }
 
 commentsContainer.appendChild(commentsFragment);
+bigPicture.querySelector(`.social__comment-count`).classList.add(`hidden`);
+bigPicture.querySelector(`.comments-loader`).classList.add(`hidden`);
