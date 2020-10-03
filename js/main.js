@@ -98,6 +98,7 @@ for (let i = 0; i < photos.length; i++) {
   picturesContainer.appendChild(pictureElement);
 }
 
+// Вывод большой картинки
 const bigPicture = document.querySelector(`.big-picture`);
 bigPicture.classList.remove(`hidden`);
 bigPicture.querySelector(`.big-picture__img`).setAttribute(`src`, photos[0].url);
@@ -105,6 +106,7 @@ bigPicture.querySelector(`.social__caption`).textContent = photos[0].description
 bigPicture.querySelector(`.likes-count`).textContent = photos[0].likes;
 bigPicture.querySelector(`.comments-count`).textContent = photos[0].comments.length;
 
+// Вывод комментариев большой картинки
 const commentsContainer = bigPicture.querySelector(`.social__comments`);
 const commentsFragment = document.createDocumentFragment();
 
@@ -124,7 +126,11 @@ for (let i = 0; i < photos[0].comments.length; i++) {
 
   commentsFragment.appendChild(newComment);
 }
-
 commentsContainer.appendChild(commentsFragment);
+
+// Прячет счетчик комментариев и загрузчик комментариев
 bigPicture.querySelector(`.social__comment-count`).classList.add(`hidden`);
 bigPicture.querySelector(`.comments-loader`).classList.add(`hidden`);
+
+// Добавит body класс, чтобы контейнер с фото позади не прокручивался при скролле
+document.querySelector(`body`).classList.add(`modal-open`);
